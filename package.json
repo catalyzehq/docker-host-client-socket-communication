@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build:client": "docker build -f client.Dockerfile . -t client",
+    "build:host": "docker build -f host.Dockerfile . -t host",
+    "build": "bun run build:client && bun run build:host",
+    "run:host": "docker run -v /var/run/docker.sock:/var/run/docker.sock -v sockets:/app/sockets -it host",
+    "reset": "docker rm -vf $(docker ps -aq)"
+  }
+}
