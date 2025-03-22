@@ -1,4 +1,5 @@
 import * as os from 'node:os';
+import { join } from 'node:path';
 
 const IMAGE = 'client';
 const SOCKETS_DIR = '/app/sockets';
@@ -90,6 +91,8 @@ try {
       throw new Error('Failed to start container');
     }
   }
+
+  const socket = join(SOCKETS_DIR, 'catalyst.sock');
 
   const response = await fetch('http://localhost', {
     method: 'POST',
